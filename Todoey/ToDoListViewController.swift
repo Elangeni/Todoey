@@ -29,5 +29,28 @@ class ToDoListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemArray.count
     }
+    
+    //MARK - Tableview delegate methods
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //print(itemArray[indexPath.row])
+        
+        //Update to UI: add a checkmark when clicked and remove when deselected.
+        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark{
+            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        }else{
+            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        }
+        
+        //Remove checkmark
+        
+        //Update to UI: Allows the item to flash gray when clicked and return to white
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        
+        
+    }
+    
+    
 }
 
